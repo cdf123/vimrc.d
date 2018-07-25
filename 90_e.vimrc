@@ -1,4 +1,7 @@
 function! s:ExecOnFile(cmd)
-  execute 'set splitright | vnew | 0r!' . a:cmd . ' #'
+  set splitright
+  vnew
+  execute '0r!' . a:cmd . ' #'
+  let &modified = 0
 endfunction
 com! -nargs=1 E call s:ExecOnFile(<f-args>)
